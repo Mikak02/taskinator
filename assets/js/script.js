@@ -10,6 +10,11 @@ var taskFormHandler = function(event) {
         name: taskNameInput,
         type: taskTypeInput
     };
+    if (!taskNameInput || !taskTypeInput) {
+        alert("You need to fill out the task form!");
+        return false;
+    };
+    formEl.reset();
 
     createTaskEl(taskDataObj);
   }; 
@@ -17,7 +22,7 @@ var taskFormHandler = function(event) {
   var createTaskEl = function(taskDataObj) {
     var listItemEl = document.createElement("li"); 
     listItemEl.className = "task-item";
-    
+
     var taskInfoEl = document.createElement("div");
     taskInfoEl.className = "task-info";
     taskInfoEl.innerHTML = "<h3 class='task-name'>" + taskDataObj.name + "</h3><span class='task-type'>" + taskDataObj.type + "</span>";
